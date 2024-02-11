@@ -3,13 +3,13 @@
 #include <string.h>
 #include <math.h>
 
-#define ROOMS 256
+#define MAP_WIDTH 16
+#define MAP_HEIGHT 16
 
-#define ROWSGLOBAL (int)ceil(sqrt(ROOMS))
-#define COLSGLOBAL (int)ceil(sqrt(ROOMS))
+#define ROOMS (MAP_WIDTH*MAP_HEIGHT)
 
-#define ROWSLOCAL 64
-#define COLSLOCAL 64
+#define ROOM_WIDTH 16
+#define ROOM_HEIGHT 16
 
 typedef unsigned int byte;
 
@@ -31,7 +31,7 @@ typedef struct
 typedef struct 
 {
     Vector2 positionLocal;
-    Vector2 positionGlobal;
+    int currentRoom;
     float quality;
     float weight;    
 } Item;
@@ -39,18 +39,18 @@ typedef struct
 typedef struct 
 {
     Vector2 globalPosition;
-    byte map[ROWSLOCAL][COLSLOCAL];
+    byte map[ROOM_WIDTH][ROOM_HEIGHT];
 } Room;
 
-int main(int argc, char *argv[]) 
+int main()
 {
-    Room rooms[ROOMS]; 
+    Room rooms[ROOMS];
     for(int i = 0; i < ROOMS; i++)
     {
-        rooms[i].globalPosition = Vector2(i % ROWSGLOBAL, i / ROWSGLOBAL);
-        for (int j = 0; j < ROWSLOCAL; j++)
+        rooms[i].globalPosition = Vector2(i % MAP_WIDTH, i / MAP_HEIGHT);
+        for (int j = 0; j < ROOM_WIDTH; j++)
         {
-            for (int k = 0; k < COLSLOCAL; k++)
+            for (int k = 0; k < ROOM_HEIGHT; k++)
             {
                 rooms[i].map[j][k] = 0;
             }
