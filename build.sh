@@ -1,1 +1,2 @@
-gcc src/main.c -o main
+terra src/main.t
+./main

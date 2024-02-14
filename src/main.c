@@ -3,8 +3,8 @@
 #include <string.h>
 #include <math.h>
 
-#define MAP_WIDTH 16
-#define MAP_HEIGHT 16
+#define MAP_WIDTH 64
+#define MAP_HEIGHT 64
 
 #define ROOMS (MAP_WIDTH*MAP_HEIGHT)
 
@@ -198,6 +198,18 @@ int main()
             {
                 rooms[i].map[j][k] = 0;
             }
+        }
+    }
+    for(int i = 0; i < ROOMS; i++)
+    {
+        printf("Room: %d, %d\n", rooms[i].globalPosition.x, rooms[i].globalPosition.y);
+        for (int j = 0; j < ROOM_WIDTH; j++)
+        {
+            for (int k = 0; k < ROOM_HEIGHT; k++)
+            {
+                printf("%d", rooms[i].map[j][k]);
+            }
+            printf("\n");
         }
     }
     return 0;
