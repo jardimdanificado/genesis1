@@ -181,13 +181,12 @@ typedef struct
     int room;
     byte position;
 } Faeces;
-
+/*
 int main()
 {
     Room rooms[ROOMS];
     Creature creatures[MAX_CREATURES];
     creatures[0] = Creature("player",Vector2(0, 0), 0, 0, SkillsDefault);
-    //printf("Player: %s\n", creatures[0].name);
     printf("Player: %d\n", isNull(creatures[2], Creature, CreatureNull));
     for(int i = 0; i < ROOMS; i++)
     {
@@ -213,4 +212,4 @@ int main()
         }
     }
     return 0;
-}
+}*/
